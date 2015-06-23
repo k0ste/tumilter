@@ -1,12 +1,13 @@
 [Unit]
 Description=Milter to limit the numer of To and Cc recipients
 After=network.target
+Before=postfix.service
 
 [Service]
 User=mail
 Group=mail
 Type=simple
-ExecStart=/usr/bin/tumilter -s inet:8894@localhost -t 10
+ExecStart=/usr/bin/tumilter.py -s inet:8894@localhost -t 10
 RemainAfterExit=yes
 
 [Install]
