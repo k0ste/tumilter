@@ -1,0 +1,13 @@
+[Unit]
+Description=Milter to limit the numer of To and Cc recipients
+After=network.target
+
+[Service]
+User=mail
+Group=mail
+Type=simple
+ExecStart=/usr/bin/tumilter -s inet:8894@localhost -t 10
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
