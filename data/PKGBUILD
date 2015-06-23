@@ -1,0 +1,19 @@
+# Maintainer: Shalygin Konstantin (k0ste@opentech.ru)
+
+pkgname='tumilter'
+pkgver='0.1'
+pkgrel='0'
+pkgdesc='Milter to limit the numer of To and Cc recipients'
+arch=('any')
+url='https://github.com/7u83/tumilter'
+license=('GPL')
+depends=('smtp-server' 'python2' 'pymilter')
+source=("git+https://github.com/k0ste/tumilter.git")
+sha256sums=('SKIP')
+
+package() {
+  pushd "$srcdir/$pkgname"
+  install -Dm 755 "tumilter.py" "$pkgdir/usr/bin/tumilter.py"
+  install -Dm 644 "tumilter.service" "$pkgdir/usr/lib/systemd/system/tumilter.service"
+  popd
+}
